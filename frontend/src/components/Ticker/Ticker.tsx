@@ -6,26 +6,20 @@ export function Ticker() {
 
   useEffect(() => {
     const handlePywebviewReady = () => {
-      // @ts-expect-error TS2339: Property 'pywebview' does not exist on type 'Window & typeof globalThis'.
       if (!window.pywebview.state) {
-        // @ts-expect-error TS2339: Property 'pywebview' does not exist on type 'Window & typeof globalThis'.
         window.pywebview.state = {};
       }
 
-      // Expose setTicker in order to call it from Python
-      // @ts-expect-error TS2339: Property 'pywebview' does not exist on type 'Window & typeof globalThis'.
+      // @ts-expect-error This is a custom state
       window.pywebview.state.setTicker = setTicker;
     };
 
-    // Check if pywebview is already ready
-    // @ts-expect-error TS2339: Property 'pywebview' does not exist on type 'Window & typeof globalThis'.
     if (window.pywebview) {
       handlePywebviewReady();
     } else {
       window.addEventListener("pywebviewready", handlePywebviewReady);
     }
 
-    // Cleanup event listener on component unmount
     return () => {
       window.removeEventListener("pywebviewready", handlePywebviewReady);
     };
