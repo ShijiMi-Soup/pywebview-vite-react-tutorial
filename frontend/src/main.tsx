@@ -7,8 +7,7 @@ declare global {
   interface Window {
     pywebview: {
       api: {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        [key: string]: (...args: any[]) => Promise<unknown>;
+        [key: string]: (...args: unknown[]) => Promise<unknown>;
       };
       [key: string]: unknown;
     };
