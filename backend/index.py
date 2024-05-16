@@ -2,10 +2,14 @@ import os
 import threading
 from time import time
 
+import numpy as np
 import webview
 
 
 class Api:
+    def rand_arr(self):
+        return np.random.rand(10).tolist()
+
     def fullscreen(self):
         webview.windows[0].toggle_fullscreen()
 
